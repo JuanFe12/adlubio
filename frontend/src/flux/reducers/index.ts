@@ -1,6 +1,11 @@
 import { combineReducers } from "redux";
-import { userReducer } from "./user.reducer";
+
+import registerReducer from "./authentication/register.reducer";
+import loginReducer from "./authentication/login.reducer";
+import foodReducer from "./foods/food.reducer";
 
 export default combineReducers({
-  userReducer,
+  registerReducer,
+  loginReducer,
+  foodReducer,
 });

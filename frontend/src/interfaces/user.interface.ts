@@ -9,3 +9,8 @@ export interface LoginInterface {
   email: String;
   password: String;
 }
+
+export interface userActionInterface {
+  type: string;
+  payload?: any;
+}

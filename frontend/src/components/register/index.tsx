@@ -1,44 +1,15 @@
 import React, { useState } from "react";
 import { BrowserRouter as Router, Link } from "react-router-dom";
+import { useRegister } from "./useRegister";
 
-/* Services */
-import { authenticationRegister } from "../services/authentication.service";
-
-/* Interfaces */
-import { UserInteface } from "../interfaces/user.interface";
-/* Material-UI */
 import { Button, TextField } from "@material-ui/core";
-
-var url = "http://localhost:4848/user";
+import Card from "../card";
 
 function Register() {
-  const [user, setUser] = useState<UserInteface>({
-    firstName: "",
-    lastName: "",
-    email: "",
-    password: "",
-  });
+  const { user, handleChange, sendData } = useRegister();
 
-  const handleChange = (e: any) => {
-    setUser({
-      ...user,
-      [e.target.name]: e.target.value,
-    });
-  };
-
-  const sendData = async() => {
-    const response = await fetch(url, {
-      method: 'POST', // *GET, POST, PUT, DELETE, etc.
-      mode: 'cors', // no-cors, *cors, same-origin
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify(user) // body data type must match "Content-Type" header
-    });
-    return response.json(); // parses JSON response into native JavaScript objects
-  }
   return (
-    <div>
+    <Card>
       <div>
         <TextField
           label="firstName"
@@ -81,7 +52,7 @@ function Register() {
           Send
         </Button>
       </Link>
-    </div>
+    </Card>
   );
 }
 

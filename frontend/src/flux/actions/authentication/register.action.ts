@@ -1,10 +1,10 @@
-import { authenticationRegister } from "../../services/authentication.service";
-import { UserInteface } from "../../interfaces/user.interface";
+import { authenticationRegister } from "../../../services/authentication.service";
+import { UserInteface } from "../../../interfaces/user.interface";
 import {
   REGISTER_USER_START,
   REGISTER_USER_SUCCESS,
   REGISTER_USER_ERROR,
-} from "../../constants";
+} from "../../../constants";
 
 const startRegister = () => {
   return { type: REGISTER_USER_START };
