@@ -1,0 +1,62 @@
+version: "3.7"
+
+services: 
+
+  api:
+    build: 
+      context: ./api
+    command: npm run start:watch
+    links: 
+      - nginx:api.adfoodio.site
+      - redis  
+      - postgres
+    environment:
+      - VIRTUAL_HOST=api.adfoodio.site
+      - VIRTUAL_PORT=4848
+    volumes: 
+      - ./api:/api
+    logging: 
+      driver: "json-file"
+      options:
+        max-size: "200k"
+        max-file: "10"
+
+  ######################################################################################################
+  ################ Services ############################################################################
+  ######################################################################################################
+
+  # Local webserver for resolving domain names
+  nginx:
+    image: jwilder/nginx-proxy:alpine
+    container_name: nginx
+    volumes:
+      - /var/run/docker.sock:/tmp/docker.sock
+      - ./conf-nginx-default.conf:/etc/nginx/vhost.d/default
+      - ./conf-nginx-default.conf:/etc/vhost.d/default
+    ports:
+      - 80:80
+
+  ######################################################################################################
+  ################ Databases ###########################################################################
+  ######################################################################################################
+
+  redis:
+    image: redis:4-alpine
+    ports:
+      - 6379:6379
+    volumes:
+        - ./cache/redis:/data
+    command: redis-server
+    restart: unless-stopped
+
+  postgres:
+    image: "postgres:12"
+    container_name: "postgres"
+    ports:
+      - "5432:5432"
+    environment:
+      POSTGRES_PASSWORD: "asdqwe123"
+      POSTGRES_USER: "postgres"
+      POSTGRES_DATABASE: "adfoodio"
+    volumes:
+      - ./pg/db_data:/var/lib/postgresql/data

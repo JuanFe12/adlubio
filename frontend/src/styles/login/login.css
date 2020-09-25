@@ -1,0 +1,15 @@
+.formLogin{
+    background-color: #F4F4F4;
+    border-radius: 25px;
+    width: 350px;
+    height: 350px;
+    margin-left: 500px;
+    margin-top: 160px;
+    box-shadow: 10px 5px 5px transparent
+}
+
+.buttonLogin{
+    color: teal;
+    margin-left: 100px;
+    margin-top: 200px;
+}
