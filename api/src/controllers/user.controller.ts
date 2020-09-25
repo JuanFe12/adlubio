@@ -33,12 +33,17 @@ export const createUser = async (
   return res.json(result);
 };
 
-export const getUser = async (
+export const Login = async (
   req: Request,
   res: Response
 ) =>{
-  const user = await prisma.user.findMany({
-    where: { id: 1}
+  const { 
+    email,
+    password
+  } = req.body;
+
+  const user = await prisma.user.findOne({
+    where: { email: email}
   })
   return res.json(user)
 }

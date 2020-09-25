@@ -5,7 +5,7 @@ export const createOrderfood = async (
   req: Request,
   res: Response
 ): Promise<Response> => {
-  const { order, food } = req.body;
+  const { order, food} = req.body;
   
   const result = await Orderfood.create({
     data: {
@@ -27,11 +27,20 @@ export const createOrderfood = async (
   return res.json(result);
 };
 
-const Total = async (
+
+/*export const quantityfood = (
   req: Request,
   res: Response
-): Promise<Response> => {
-  
+) => {
+  const { quantityfood } = req.body;
+  const result = await Orderfood.create({
+    data: {
+      quantityfood
+    }
+  }).catch((e) => {
+    console.log(e);
+  });
 
-  return res.json();
-}
+  return res.json(result);
+
+}*/

@@ -301,6 +301,20 @@
     {
       "tag": "CreateField",
       "model": "Food",
+      "field": "typeFood",
+      "type": "String",
+      "arity": "Required"
+    },
+    {
+      "tag": "CreateField",
+      "model": "Food",
+      "field": "url",
+      "type": "String",
+      "arity": "Required"
+    },
+    {
+      "tag": "CreateField",
+      "model": "Food",
       "field": "description",
       "type": "String",
       "arity": "Required"

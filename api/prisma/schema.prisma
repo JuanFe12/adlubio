@@ -31,6 +31,8 @@ model Food {
   id            Int       @default(autoincrement()) @id
   nameFood      String   
   price         Int
+  typeFood      String
+  url           String 
   description   String
   discounts     Int  
   orderFood     Orderfood[]

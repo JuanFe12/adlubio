@@ -1,7 +1,7 @@
 import { Router } from "express";
 
-import { createUser, getUser } from "../../controllers/user.controller";
-import { createFood } from "../../controllers/food.controller";
+import { createUser, Login } from "../../controllers/user.controller";
+import { createFood, getFood } from "../../controllers/food.controller";
 import { createOrderfood } from '../../controllers/orderfood.controller';
 import { createOrder } from './../../controllers/order.controller';
 
@@ -16,9 +16,10 @@ const router = Router();
 
 //User
 router.post("/user", createUser);
-router.post("/users", getUser);
+router.post("/login", Login);
 //Food
 router.post("/food", createFood);
+router.get("/foods", getFood)
 //Order
 router.post("/order", createOrder);
 //Orderfood
